@@ -4,6 +4,7 @@ import CounterValue from "./CounterValue";
 
 const Counter = () => {
   const [count, setCount] = useState(1);
+  const MAX_COUNT = process.env.REACT_APP_MAX_VALUE || 1000;
 
   useEffect(() => {
     getInitialCount();
@@ -23,7 +24,12 @@ const Counter = () => {
   };
 
   const incrementCount = () => {
-    setCount((prevCount) => prevCount + 1);
+    setCount((prevCount) => {
+      if (prevCount < MAX_COUNT) {
+        return prevCount + 1;
+      }
+      return prevCount;
+    });
   };
 
   const handleCountText = (e) => {
@@ -32,7 +38,8 @@ const Counter = () => {
       setCount(countStr);
       return;
     }
-    setCount(countStr && parseInt(countStr));
+    if (countStr && parseInt(countStr) <= MAX_COUNT)
+      setCount(parseInt(countStr));
   };
 
   return (
