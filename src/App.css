@@ -1,38 +1,70 @@
 .App {
+  font-family: sans-serif;
   text-align: center;
+  background: #ebeef2;
+  height: 100vh;
+  padding: 100px 100px 60px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  background: white;
+  height: 50vh;
+  box-shadow: 0px 2px 2px #00000029;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.counterBody {
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.decrement, .increment {
+  width:60px;
+  height:40px;
+  line-height: 40px;
+  background:#ffffff;
+  color: #b84a42;
+  padding:8px 5px 8px 5px;
+  border:2px solid #b84a42;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.decrement {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.increment {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.decrement:hover, .increment:hover {
+  background:#b84a42;
+  color: #ffffff;
+}
+
+.count {
+  height:54px;
+  width: 70px;
+  background: #fae5e3;
+  color: #b84a42;
+  text-align: center;
+  font-size: 26px;
+  border:2px solid #b84a42;
+  border-right: none;
+  border-left: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.counterValue {
+  margin-top: 20px;
 }
