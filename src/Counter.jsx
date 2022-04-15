@@ -10,6 +10,11 @@ const Counter = () => {
     getInitialCount();
   }, []);
 
+  useEffect(() => {
+    saveCount();
+  }, [count]);
+
+
   const getInitialCount = async () => {
     try {
       const res = await axios.get(
@@ -18,6 +23,18 @@ const Counter = () => {
       if (res?.status === 200 && res?.data?.counter1) {
         setCount(res.data.counter1);
       }
+    } catch (err) {
+      console.log({ err });
+    }
+  };
+
+  const saveCount = async () => {
+    try {
+      const countValue = { counter1: count };
+      axios.put(
+        "https://interview-8e4c5-default-rtdb.firebaseio.com/front-end/8387039003.json",
+        countValue
+      );
     } catch (err) {
       console.log({ err });
     }
