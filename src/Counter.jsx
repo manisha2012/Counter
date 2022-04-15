@@ -45,10 +45,18 @@ const Counter = () => {
 
   const incrementCount = () => {
     setCount((prevCount) => {
-      if (prevCount < MAX_COUNT) {
-        return prevCount + 1;
+      const prevCountInt = parseInt(prevCount) || 0;
+      if (prevCountInt < MAX_COUNT) {
+        return prevCountInt + 1;
       }
-      return prevCount;
+      return prevCountInt;
+    });
+  };
+
+  const decerementCount = () => {
+    setCount((prevCount) => {
+      const prevCountInt = parseInt(prevCount) || 0;
+      return prevCountInt - 1;
     });
   };
 
@@ -71,10 +79,7 @@ const Counter = () => {
         </div>
       )}
       <div className="counterBody">
-        <span
-          className="decrement"
-          onClick={() => setCount((prevCount) => prevCount - 1)}
-        >
+        <span className="decrement" onClick={decerementCount}>
           -
         </span>
         <input
