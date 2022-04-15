@@ -1,6 +1,10 @@
 
 ![Screenshot 2022-04-15 at 09 56 06](https://user-images.githubusercontent.com/27992446/163518416-28b37a0f-e0a4-431f-a0a9-47a65cd9328b.png)
 
+**See Demo** [here](https://counter13.herokuapp.com/)
+
+
+
 A counter component in React.js, HTML and CSS ( without external JS/CSS frameworks or libraries such as bootstrap, lodash, etc) that can increment or decrement a counter upon clicking the plus and minus buttons.
 
 Functional requirements - 
