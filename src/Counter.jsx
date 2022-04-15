@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CounterValue from "./CounterValue";
 
 const Counter = () => {
   const [count, setCount] = useState(1);
+  const [loading, setLoading] = useState(false);
   const MAX_COUNT = process.env.REACT_APP_MAX_VALUE || 1000;
 
   useEffect(() => {
@@ -13,7 +14,6 @@ const Counter = () => {
   useEffect(() => {
     saveCount();
   }, [count]);
-
 
   const getInitialCount = async () => {
     try {
@@ -30,13 +30,16 @@ const Counter = () => {
 
   const saveCount = async () => {
     try {
+      setLoading(true);
       const countValue = { counter1: count };
       axios.put(
         "https://interview-8e4c5-default-rtdb.firebaseio.com/front-end/8387039003.json",
         countValue
       );
+      setLoading(false);
     } catch (err) {
       console.log({ err });
+      setLoading(false);
     }
   };
 
@@ -61,6 +64,12 @@ const Counter = () => {
 
   return (
     <>
+      {loading && (
+        <div className="loaderDiv">
+          <div className="loader"></div>
+          <div>Saving counter value</div>
+        </div>
+      )}
       <div className="counterBody">
         <span
           className="decrement"
